@@ -1,7 +1,7 @@
 const Promise = require('bluebird')
 const request = require('supertest')
 const assert = require('assert')
-const m = require('../../../app/models')
+const m = require('../../../dist/models')
 const app = require('../../../')
 const h = require('../../helpers')
 

@@ -1,7 +1,7 @@
 const Promise = require('bluebird')
 const faker = require('faker')
 const crypto = require('crypto')
-const Auth = require('../app/services/auth')
+const Auth = require('../dist/services/auth')
 
 function generateActivityMeta (attrs = {}) {
   let createdAt = faker.date.recent()

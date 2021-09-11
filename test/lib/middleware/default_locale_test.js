@@ -1,5 +1,5 @@
 const assert = require('assert')
-const defaultLocaleInfo = require('../../../app/lib/middleware/default_locale_info')
+const defaultLocaleInfo = require('../../../dist/lib/middleware/default_locale_info')
 
 describe('Middleware: defaultLocale', () => {
   let req, res, next, defaultLocale

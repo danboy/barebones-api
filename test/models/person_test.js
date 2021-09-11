@@ -1,6 +1,6 @@
 const Promise = require('bluebird')
 const assert = require('assert')
-const m = require('../../app/models')
+const m = require('../../dist/models')
 const User = m.User
 const { generateActivityMeta, generateAddressMeta, generateUserMeta } = require('../helpers')
 

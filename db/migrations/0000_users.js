@@ -6,7 +6,6 @@ module.exports = {
       id: {
         type: Sequelize.UUID,
         defaultValue: Sequelize.UUIDV4(),
-        allowNull: false,
         primaryKey: true
       },
       full_name: { // "What is your full name?" - Jos van der Wallen
@@ -30,12 +29,13 @@ module.exports = {
       },
       status: {
         type: Sequelize.STRING(20),
-        allowNull: false
+        allowNull: false,
+        defaultValue: "created"
       },
       password: Sequelize.STRING,
       slug: {
         type: Sequelize.STRING(30),
-        allowNull: false,
+        allowNull: true,
         unique: true
       },
       updated_at: Sequelize.DATE,

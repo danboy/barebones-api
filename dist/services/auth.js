@@ -34,7 +34,7 @@ var self = {
     checkToken: function (req, res, next) {
         if (req.headers &&
             req.headers.authorization &&
-            req.headers.authorization.split(" ")[0] === "JWT") {
+            req.headers.authorization.split(" ")[0] === "Bearer") {
             let token = req.headers.authorization.split(" ")[1];
             if (jwt.verify(token, { algorithms: [process.env.ALGO] })) {
                 req.user = jwt.decode(token, { complete: true });

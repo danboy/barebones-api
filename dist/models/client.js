@@ -9,10 +9,22 @@ module.exports = (sequelize, DataTypes) => {
          */
         static associate(models) {
             // define association here
+            models.Client.belongsToMany(models.User, {
+                as: "users",
+                through: "client_users",
+                foreignKey: "client_id",
+                otherKey: "user_id"
+            });
         }
     }
     ;
     Client.init({
+        id: {
+            primaryKey: true,
+            allowNull: false,
+            type: DataTypes.UUID,
+            defaultValue: DataTypes.UUIDV4()
+        },
         name: DataTypes.STRING,
         deleted: DataTypes.BOOLEAN,
         handle: DataTypes.STRING,
@@ -23,13 +35,10 @@ module.exports = (sequelize, DataTypes) => {
         contact_email: DataTypes.STRING,
         contact_name: DataTypes.STRING,
         contact_phone: DataTypes.STRING,
-        id: {
-            primaryKey: true,
-            type: DataTypes.UUID
-        }
     }, {
         sequelize,
         modelName: 'Client',
+        tableName: "clients"
     });
     return Client;
 };

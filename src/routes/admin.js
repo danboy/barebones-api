@@ -12,6 +12,11 @@ function defineEndpoints({ mw, ctrlrs }) {
     .all(mw.requireActorRole("admin"));
 
   router
+    .route("/clients")
+    .get(ctrlrs.Clients.index)
+    .post(ctrlrs.Clients.create);
+
+  router
     .route("/roles")
     .get(ctrlrs.Roles.index)
     .post(ctrlrs.Roles.create);

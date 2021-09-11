@@ -16,7 +16,7 @@ class UserController extends BaseController {
                 user_id: user.id,
                 issuer: process.env.ISSUER,
                 subject: user.email,
-                audience: req.body.audience
+                audience: req.body.audience || ""
             }, function (token) {
                 res.send({ token: token });
             });

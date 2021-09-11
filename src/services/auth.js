@@ -40,7 +40,7 @@ var self = {
     if (
       req.headers &&
       req.headers.authorization &&
-      req.headers.authorization.split(" ")[0] === "JWT"
+      req.headers.authorization.split(" ")[0] === "Bearer"
     ) {
       let token = req.headers.authorization.split(" ")[1];
       if (jwt.verify(token, { algorithms: [process.env.ALGO] })) {
