@@ -44,7 +44,7 @@ function random (items) {
 }
 
 function uuid () {
-  return faker.random.uuid()
+  return faker.datatype.uuid()
 }
 
 function getTokenFor (someUser) {

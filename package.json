@@ -15,8 +15,16 @@
     "db:reset:noseeds": "npm run-script db:drop && npm run-script db:create && npm run-script db:migrate",
     "features": "node_modules/.bin/cucumber-js --exit -r test/init.js -r test/features/support/*.js test/features/*.feature",
     "features:watch": "nodemon -e feature,js node_modules/.bin/cucumber-js -- -r test/init.js -r test/features/support/*.js test/features/*.feature",
-    "test": "node_modules/.bin/mocha --exit -r ./test/init.js test/**/*_test.js",
-    "test:watch": "node_modules/.bin/mocha -r ./test/init.js -w app/**/*.js -w test/**/*_test.js -w test/**/**/*_test.js"
+    "test": "jest",
+    "test:watch": "node_modules/.bin/mocha --recursive -r ./test/init.js -w src/**/*.js -w test/**/*test.js -w test/**/**/*test.js"
+  },
+  "jest": {
+    "clearMocks": true,
+    "collectCoverage": true,
+    "coverageDirectory": "coverage",
+    "testMatch": [
+      "**/?(*.)+(spec|test).[tj]s?(x)"
+    ]
   },
   "husky": {
     "hooks": {
@@ -54,11 +62,13 @@
     "uuid": "^8.3.2"
   },
   "devDependencies": {
+    "@babel/core": "^7.15.5",
     "@types/cookie-parser": "^1.4.2",
     "@types/http-errors": "^1.8.1",
     "@types/i18n": "^0.13.1",
     "@types/morgan": "^1.9.3",
     "@types/node": "^16.7.10",
+    "babel-jest": "^27.1.1",
     "chai": "^4.3.4",
     "cucumber": "^6.0.5",
     "eslint": "^7.32.0",
@@ -68,6 +78,7 @@
     "eslint-plugin-promise": "^5.1.0",
     "eslint-plugin-standard": "^5.0.0",
     "husky": "^7.0.2",
+    "jest": "^27.1.1",
     "lint-staged": "^11.1.2",
     "mocha": "^9.1.1",
     "sequelize-cli": "^6.2.0",

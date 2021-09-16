@@ -1,4 +1,6 @@
-const DecoratedRouter = require("../lib/decorated_router");
+import DecoratedRouter from "../lib/decorated_router";
+
+import signup from "../docs/signup.json";
 
 function defineEndpoints({ mw, ctrlrs }) {
   let router = new DecoratedRouter();
@@ -9,9 +11,16 @@ function defineEndpoints({ mw, ctrlrs }) {
 
   router.route("*").all(mw.requireContentType(/^application\/json/));
 
-  router.route("/signup").post(setDefaultLocale, ctrlrs.Users.create);
+  router
+    .docs("signup", signup)
+    .route("/signup")
+      .post(setDefaultLocale, ctrlrs.Users.create);
 
   router.route("/token").post(ctrlrs.Users.getToken);
+
+  router
+    .route("/unauthenticated")
+      .get(router.generateLanding(router)) 
 
   return router;
 }
